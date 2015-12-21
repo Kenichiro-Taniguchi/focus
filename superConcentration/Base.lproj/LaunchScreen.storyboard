@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="WawaSC-Regular.otf">
+            <string>DFWaWaSC-W5</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="EHf-IW-A2E">
+            <objects>
+                <viewController id="01J-lp-oVM" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Llm-lL-Icb"/>
+                        <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Copyright © 2015年 谷口健一郎. All rights reserved" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oov-TJ-m35">
+                                <rect key="frame" x="0.0" y="633" width="375" height="34"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="34" id="kUD-fA-poK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="本アイコン.png" translatesAutoresizingMaskIntoConstraints="NO" id="h1d-af-pmf">
+                                <rect key="frame" x="157" y="304" width="60" height="60"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="TzE-iZ-eT6"/>
+                                    <constraint firstAttribute="height" constant="80" id="hdy-VV-xbp"/>
+                                    <constraint firstAttribute="width" constant="94" id="m9H-h8-zWz"/>
+                                    <constraint firstAttribute="height" constant="60" id="ub2-l2-CfF"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hdy-VV-xbp"/>
+                                        <exclude reference="m9H-h8-zWz"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNF-LO-Zsg">
+                                <rect key="frame" x="0.0" y="372" width="375" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="AZ9-n5-00W"/>
+                                    <constraint firstAttribute="height" constant="37" id="P9P-le-s6G"/>
+                                    <constraint firstAttribute="height" constant="37" id="s7O-zb-WEs"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="DFWaWaSC-W5" family="Wawati SC" pointSize="34"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="AZ9-n5-00W"/>
+                                        <exclude reference="P9P-le-s6G"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="072-Ca-meC"/>
+                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7NL-Ml-sfC"/>
+                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="E2c-rD-GMf"/>
+                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GBc-Yo-W1e"/>
+                            <constraint firstAttribute="trailing" secondItem="Oov-TJ-m35" secondAttribute="trailing" id="HRV-TR-ScL"/>
+                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IcG-IF-ePG"/>
+                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="top" secondItem="h1d-af-pmf" secondAttribute="bottom" constant="8" id="Iqi-Og-BW4"/>
+                            <constraint firstAttribute="trailing" secondItem="uNF-LO-Zsg" secondAttribute="trailing" id="X1K-On-ojJ"/>
+                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ezK-UP-UC8"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Oov-TJ-m35" secondAttribute="bottom" id="hh5-Pb-0zL"/>
+                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="top" secondItem="h1d-af-pmf" secondAttribute="bottom" constant="14" id="k6a-WX-cNX"/>
+                            <constraint firstAttribute="trailing" secondItem="uNF-LO-Zsg" secondAttribute="trailing" id="uVG-O3-t0k"/>
+                            <constraint firstItem="Oov-TJ-m35" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="xHX-DP-aq7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="072-Ca-meC"/>
+                                <exclude reference="GBc-Yo-W1e"/>
+                                <exclude reference="ezK-UP-UC8"/>
+                                <exclude reference="k6a-WX-cNX"/>
+                                <exclude reference="uVG-O3-t0k"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.5" y="374.5"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="本アイコン.png" width="256" height="256"/>
+    </resources>
+</document>
