@@ -8,25 +8,33 @@
 
 import UIKit
 import MapKit
-
+import CoreLocation
 class MainSearchViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     var latitude:CLLocationDegrees?
     var longitude:CLLocationDegrees?
     var jsonDict:NSDictionary = [:]
+    var storeLatitude:String?
+    var storeLongitude:String?
+    var storeAddress:String?
     var restArray:NSArray = []
-    var personalLatitude:String?
-    var personalLongitude:String?
     var nearDict:NSMutableDictionary = [:]
     var name:String?
     var trueArray:[String] = []
     var keysArray:[Double] = []
     var backBtn: UIBarButtonItem!
+    var myGeocoder: CLGeocoder = CLGeocoder()
 
     @IBOutlet weak var tableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Search"
+        
+        var alert = UIAlertView()
+        alert.title = "カフェの検索"
+        alert.message = "今の現在地から近い順にカフェを検索しています"
+        alert.addButtonWithTitle("OK")
+        alert.show()
         
         tableView.backgroundColor = UIColor.blackColor()
         tableView.separatorColor = UIColor.whiteColor()
@@ -37,18 +45,24 @@ class MainSearchViewController: UIViewController,UITableViewDelegate,UITableView
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         //AppDelegateのインスタンスを取得
         latitude = appDelegate.latitude
-        longitude = appDelegate.longtude
+        longitude = appDelegate.longtude 
+                print(latitude!)
+                print(longitude!)
+        
                 // Do any additional setup after loading the view.
         
-        let urlStr = "http://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=16152aa86fd92715782b9c74b71ea434&format=json&latitude=\(latitude)&longitude=\(longitude)&range=5&hit_per_page=100&category_s=RSFST18001"
+        let urlStr = "http://api.gnavi.co.jp/RestSearchAPI/20150630/?keyid=16152aa86fd92715782b9c74b71ea434&format=json&latitude=\(latitude!)&longitude=\(longitude!)&range=5&hit_per_page=100&category_s=RSFST18001"
         let url = NSURL(string: urlStr)
         
         let apiData = NSData(contentsOfURL: url!)
         
         jsonDict = (try! NSJSONSerialization.JSONObjectWithData(apiData!, options: [])) as! NSDictionary
         
-               
         sort()
+        
+        
+        
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,8 +98,10 @@ class MainSearchViewController: UIViewController,UITableViewDelegate,UITableView
         if (jsonDict["rest"] != nil){
             for i in 0...(jsonDict["rest"]?.count)!-1{
                 if nameSelect == jsonDict["rest"]![i]["name"] as! String{
-                    tvc.latitude = Double(jsonDict["rest"]![i]["latitude"] as! String)
-                    tvc.longitude = Double(jsonDict["rest"]![i]["longitude"] as! String)
+                    tvc.storeAddress = jsonDict["rest"]![i]["address"] as! String
+                    
+                    
+                    
                 }
             }
         }
@@ -94,29 +110,31 @@ class MainSearchViewController: UIViewController,UITableViewDelegate,UITableView
     }
     
     func sort(){
-        if(jsonDict["rest"] != nil){
+        
+        
+
+        if (jsonDict["rest"] != nil){
             for i in 0...(jsonDict["rest"]?.count)!-1{
-                personalLatitude = jsonDict["rest"]![i]["latitude"] as! String
-                personalLongitude = jsonDict["rest"]![i]["longitude"] as! String
-                let x = Double(personalLatitude!)
-                let y = Double(personalLongitude!)
+                storeLatitude = jsonDict["rest"]![i]["latitude"] as! String
+                storeLongitude = jsonDict["rest"]![i]["longitude"] as! String
+                let x = Double(storeLatitude!)
+                let y = Double(storeLongitude!)
                 print(x!)
                 print(y!)
                 name = jsonDict["rest"]![i]["name"] as! String
                 print(name!)
-                let z = 34.871293-x!
-                let w = 135.682968-y!
+                let z = Double(latitude!)-x!
+                let w = Double(longitude!)-y!
                 let distance = z*z+w*w
                 nearDict.setValue(name!, forKey: "\(distance)")
                 
                 
                 
                 
-                
-                
             }
             for i in 0...nearDict.allKeys.count-1{
-                var check = String(nearDict.allKeys[i])
+                let
+                check = String(nearDict.allKeys[i])
                 let core = Double(check)
                 keysArray.append(core!)
                 
@@ -137,10 +155,10 @@ class MainSearchViewController: UIViewController,UITableViewDelegate,UITableView
                 }
             }
             print(trueArray)
-            
         }else{
-        trueArray.append("周辺にお店が見つかりませんでした")
+        trueArray.append("周辺にお店はございません")
         }
+        
        
     
     }

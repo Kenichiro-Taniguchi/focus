@@ -38,7 +38,7 @@
 		998A4CD61C15D5F5002A9ABA /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998A4CD51C15D5F5002A9ABA /* SystemConfiguration.framework */; };
 		998A4CDA1C15D8DD002A9ABA /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 998A4CD91C15D8DD002A9ABA /* Reachability.swift */; };
 		998A4CDC1C15F720002A9ABA /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998A4CDB1C15F720002A9ABA /* iAd.framework */; };
-		998A4CDE1C16040B002A9ABA /* azarasi.png in Resources */ = {isa = PBXBuildFile; fileRef = 998A4CDD1C16040B002A9ABA /* azarasi.png */; };
+		998C60E01C326C660041361E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 998C60DF1C326C660041361E /* CoreLocation.framework */; };
 		99C387901C19D5A100ED52EB /* 本アイコン.png in Resources */ = {isa = PBXBuildFile; fileRef = 99C3878F1C19D5A100ED52EB /* 本アイコン.png */; };
 		99C387941C19DCEC00ED52EB /* WawaSC-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 99C387931C19DCEC00ED52EB /* WawaSC-Regular.otf */; };
 /* End PBXBuildFile section */
@@ -98,7 +98,7 @@
 		998A4CD51C15D5F5002A9ABA /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		998A4CD91C15D8DD002A9ABA /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		998A4CDB1C15F720002A9ABA /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
-		998A4CDD1C16040B002A9ABA /* azarasi.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = azarasi.png; path = "../../../ios 素材/azarasi.png"; sourceTree = "<group>"; };
+		998C60DF1C326C660041361E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		99C3878F1C19D5A100ED52EB /* 本アイコン.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "本アイコン.png"; path = "../../../../Downloads/本アイコン.png"; sourceTree = "<group>"; };
 		99C387931C19DCEC00ED52EB /* WawaSC-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "WawaSC-Regular.otf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -108,6 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				998C60E01C326C660041361E /* CoreLocation.framework in Frameworks */,
 				998A4CDC1C15F720002A9ABA /* iAd.framework in Frameworks */,
 				998A4CD61C15D5F5002A9ABA /* SystemConfiguration.framework in Frameworks */,
 				992FFE751C142AAE003B8995 /* MapKit.framework in Frameworks */,
@@ -136,6 +137,7 @@
 		992FFDD41C115BF7003B8995 = {
 			isa = PBXGroup;
 			children = (
+				998C60DF1C326C660041361E /* CoreLocation.framework */,
 				998A4CDB1C15F720002A9ABA /* iAd.framework */,
 				998A4CD51C15D5F5002A9ABA /* SystemConfiguration.framework */,
 				992FFE741C142AAE003B8995 /* MapKit.framework */,
@@ -245,7 +247,6 @@
 				998A4C911C1553A7002A9ABA /* AdminBtn.jpg */,
 				998A4C921C1553A7002A9ABA /* Search.jpg */,
 				99C3878F1C19D5A100ED52EB /* 本アイコン.png */,
-				998A4CDD1C16040B002A9ABA /* azarasi.png */,
 				998A4C931C1553A7002A9ABA /* vocabrary.jpeg */,
 			);
 			name = image;
@@ -357,7 +358,6 @@
 			files = (
 				998A4C941C1553A7002A9ABA /* AdminBtn.jpg in Resources */,
 				99C387941C19DCEC00ED52EB /* WawaSC-Regular.otf in Resources */,
-				998A4CDE1C16040B002A9ABA /* azarasi.png in Resources */,
 				992FFDEE1C115BF7003B8995 /* LaunchScreen.storyboard in Resources */,
 				992FFDEB1C115BF7003B8995 /* Assets.xcassets in Resources */,
 				99C387901C19D5A100ED52EB /* 本アイコン.png in Resources */,

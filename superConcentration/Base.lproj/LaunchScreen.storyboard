@@ -32,22 +32,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="本アイコン.png" translatesAutoresizingMaskIntoConstraints="NO" id="h1d-af-pmf">
-                                <rect key="frame" x="157" y="304" width="60" height="60"/>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="TzE-iZ-eT6"/>
-                                    <constraint firstAttribute="height" constant="80" id="hdy-VV-xbp"/>
-                                    <constraint firstAttribute="width" constant="94" id="m9H-h8-zWz"/>
-                                    <constraint firstAttribute="height" constant="60" id="ub2-l2-CfF"/>
-                                </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="hdy-VV-xbp"/>
-                                        <exclude reference="m9H-h8-zWz"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Focus" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uNF-LO-Zsg">
                                 <rect key="frame" x="0.0" y="372" width="375" height="37"/>
                                 <constraints>
@@ -65,30 +49,31 @@
                                     </mask>
                                 </variation>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="本アイコン.png" translatesAutoresizingMaskIntoConstraints="NO" id="zIw-AY-aI1">
+                                <rect key="frame" x="157" y="304" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="y2M-Vv-hq4"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <animations/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="072-Ca-meC"/>
-                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7NL-Ml-sfC"/>
                             <constraint firstItem="uNF-LO-Zsg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="E2c-rD-GMf"/>
-                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="GBc-Yo-W1e"/>
                             <constraint firstAttribute="trailing" secondItem="Oov-TJ-m35" secondAttribute="trailing" id="HRV-TR-ScL"/>
-                            <constraint firstItem="h1d-af-pmf" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="IcG-IF-ePG"/>
-                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="top" secondItem="h1d-af-pmf" secondAttribute="bottom" constant="8" id="Iqi-Og-BW4"/>
+                            <constraint firstItem="zIw-AY-aI1" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="UDe-A4-9gb"/>
                             <constraint firstAttribute="trailing" secondItem="uNF-LO-Zsg" secondAttribute="trailing" id="X1K-On-ojJ"/>
                             <constraint firstItem="uNF-LO-Zsg" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="ezK-UP-UC8"/>
+                            <constraint firstItem="zIw-AY-aI1" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="284" id="f46-qB-9Me"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="Oov-TJ-m35" secondAttribute="bottom" id="hh5-Pb-0zL"/>
-                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="top" secondItem="h1d-af-pmf" secondAttribute="bottom" constant="14" id="k6a-WX-cNX"/>
+                            <constraint firstItem="uNF-LO-Zsg" firstAttribute="top" secondItem="zIw-AY-aI1" secondAttribute="bottom" constant="8" symbolic="YES" id="lmj-Kq-aDe"/>
+                            <constraint firstItem="zIw-AY-aI1" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ons-qf-p3m"/>
                             <constraint firstAttribute="trailing" secondItem="uNF-LO-Zsg" secondAttribute="trailing" id="uVG-O3-t0k"/>
                             <constraint firstItem="Oov-TJ-m35" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="xHX-DP-aq7"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="072-Ca-meC"/>
-                                <exclude reference="GBc-Yo-W1e"/>
                                 <exclude reference="ezK-UP-UC8"/>
-                                <exclude reference="k6a-WX-cNX"/>
                                 <exclude reference="uVG-O3-t0k"/>
                             </mask>
                         </variation>

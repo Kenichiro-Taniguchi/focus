@@ -12,11 +12,9 @@ import CoreLocation
 
 class mapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDelegate {
     
-    var latitude:CLLocationDegrees?
-    var longitude:CLLocationDegrees?
+    var storeAddress:String?
     var selflatitude:CLLocationDegrees?
     var selflongitude:CLLocationDegrees?
-
     var locationManager: CLLocationManager!
     
     var destLocation: CLLocationCoordinate2D!
@@ -24,6 +22,8 @@ class mapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
     @IBOutlet weak var mapView: MKMapView!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+       
         
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         //AppDelegateのインスタンスを取得
@@ -41,10 +41,22 @@ class mapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
         mapView.setCenterCoordinate(mapView.userLocation.coordinate, animated: true)
         mapView.userTrackingMode = MKUserTrackingMode.Follow
         locationManager.distanceFilter = 300
-        
-        locationManager.startUpdatingLocation()
+        var myGeocoorder = CLGeocoder()
+        myGeocoorder.geocodeAddressString(storeAddress!, completionHandler: {(placemarks,error) -> Void in
+            var placemark: CLPlacemark!
+            
+            for placemark in placemarks!{
+                
+                self.destLocation = CLLocationCoordinate2DMake(placemark.location!.coordinate.latitude, placemark.location!.coordinate.longitude)
+                // 目的地にピンを立てる
+                self.mapView.addAnnotation(MKPlacemark(placemark: placemark))
+                // 現在地の取得を開始
+                self.locationManager.startUpdatingLocation()
+            }
+        })
+    
     }
-
+   
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -52,17 +64,6 @@ class mapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
     
     // 位置情報取得に成功したときに呼び出されるデリゲート.
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
-                // 表示する領域を設定する
-                
-                // 現在地から目的地家の経路を検索
-        
-        destLocation = CLLocationCoordinate2DMake(latitude!,longitude!)
-        let destLocAnnotation: MKPointAnnotation = MKPointAnnotation()
-        destLocAnnotation.coordinate = destLocation
-        destLocAnnotation.title = "目的地"
-        mapView.addAnnotation(destLocAnnotation)
         getRoute()
         
     }
@@ -76,7 +77,7 @@ class mapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
         let request = MKDirectionsRequest()
         
         request.source = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: selflatitude!, longitude: selflongitude!), addressDictionary: nil))
-        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!), addressDictionary: nil))
+        request.destination = MKMapItem(placemark: MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: destLocation.latitude, longitude: destLocation.longitude), addressDictionary: nil))
         request.requestsAlternateRoutes = false // 単独の経路を検索
         request.transportType = MKDirectionsTransportType.Any
         
@@ -101,7 +102,6 @@ class mapViewController: UIViewController,CLLocationManagerDelegate,MKMapViewDel
         renderer.lineWidth = 5.0
         return renderer
     }
-    
 
     /*
     // MARK: - Navigation

@@ -25,6 +25,7 @@ class MainVocabraryViewController: UIViewController,UITableViewDelegate,UITableV
         
         
         self.title = "Vocabulary"
+        self.view.backgroundColor = UIColor.blackColor()
         
         // ナビゲーションバーを取得.
         self.navigationController?.navigationBar

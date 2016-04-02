@@ -7,13 +7,13 @@
 //
 
 import UIKit
-import MapKit
 import iAd
+import CoreLocation
 
 
 class ViewController: UIViewController,CLLocationManagerDelegate {
     
-    var locationManager:CLLocationManager?
+    var lm: CLLocationManager! = nil
     var latitude:CLLocationDegrees?
     var longtude:CLLocationDegrees?
     var json:NSDictionary = [:]
@@ -26,6 +26,14 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBOutlet weak var searchBtn: UIButton!
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        lm = CLLocationManager()
+        lm.delegate = self
+        
+        lm.requestAlwaysAuthorization()
+        lm.desiredAccuracy = kCLLocationAccuracyBest
+        lm.distanceFilter = 300
+        lm.startUpdatingLocation()
         
         
         
@@ -41,45 +49,19 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.view.addSubview(myActivityIndicator)
         
        
-        var iAdBanner = ADBannerView()
+        let iAdBanner = ADBannerView()
         //画面下に配置
         iAdBanner.frame.origin.y = self.view.frame.height - iAdBanner.frame.height
         //バナー表示前に表示される背景の色を指定
         iAdBanner.backgroundColor = UIColor.blackColor()
         self.view.addSubview(iAdBanner)
         
-        locationManager = CLLocationManager()
         
-        if (locationManager != NSNull()){
-            locationManager?.delegate = self
-            
-            locationManager?.requestAlwaysAuthorization()
-            
-            let status = CLLocationManager.authorizationStatus()
-            
-            switch status{
-            case.Restricted,.Denied:
-                break
-            case.NotDetermined:
-                if ((locationManager?.respondsToSelector("requestWhenInUseAuthorization")) != nil){
-                    locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-                    locationManager?.requestWhenInUseAuthorization()
-                    
-                    locationManager?.startUpdatingLocation()
-                }else{
-                    locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-                    locationManager?.startUpdatingLocation()
-                }
-            case.AuthorizedWhenInUse,.AuthorizedAlways:
-                locationManager?.startUpdatingLocation()
-            default:
-                break
-            }
-            
-        }
+        
         
                 
     }
+    
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return UIStatusBarStyle.LightContent
@@ -91,6 +73,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     override func viewWillAppear(animated: Bool) {
+        
         
         if (self.view.frame.height == 480){
             print("iPhone4s")
@@ -145,10 +128,40 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     @IBAction func tapVocabrary(sender: AnyObject) {
         performSegueWithIdentifier("showVocabraryVC", sender: nil)
     }
-    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
-        latitude = newLocation.coordinate.latitude
-        longtude = newLocation.coordinate.longitude
+    
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        print("didChangeAuthorizationStatus");
+        
+        // 認証のステータスをログで表示.
+        var statusStr = "";
+        switch (status) {
+        case .NotDetermined:
+            statusStr = "NotDetermined"
+        case .Restricted:
+            statusStr = "Restricted"
+        case .Denied:
+            statusStr = "Denied"
+        case .AuthorizedAlways:
+            statusStr = "AuthorizedAlways"
+        case .AuthorizedWhenInUse:
+            statusStr = "AuthorizedWhenInUse"
+        }
+        print(" CLAuthorizationStatus: \(statusStr)")
     }
+    
+    
+    
+    func locationManager(manager: CLLocationManager, didUpdateToLocation newLocation: CLLocation, fromLocation oldLocation: CLLocation) {
+        latitude = Double(newLocation.coordinate.latitude)
+        longtude = Double(newLocation.coordinate.longitude)
+        print(latitude!)
+        print(longtude!)
+    }
+    
+    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+        print("失敗")
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier == "showSeachVC"){
             let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate //AppDelegateのインスタンスを取得
